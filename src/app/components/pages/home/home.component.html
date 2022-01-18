@@ -19,14 +19,14 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngFor="let agendamento of agendamentos">
                     <tr>
-                        <td>Aula Español</td>
-                        <td>Luis Castillo</td>
-                        <td>20/01/2021</td>
+                        <td>{{agendamento.name_area}}</td>
+                        <td>{{agendamento.name_profesor}}</td>
+                        <td>{{agendamento.date}} - {{agendamento.hour}}</td>
                         <td>
-                            <span style="padding: 10px;"><a href="#" class="btn btn-danger btn-circle"><i class="bi bi-trash"></i></a></span>
-                            <a href="#" class="btn btn-primary btn-circle"><i class="bi bi-pencil-square"></i></a>
+                            <span style="padding: 10px;"><a (click)="eliminar(agendamento.id)" class="btn btn-danger btn-circle"><i class="bi bi-trash"></i></a></span>
+                            <a (click)="editar(agendamento.id)" class="btn btn-primary btn-circle"><i class="bi bi-pencil-square"></i></a>
                         </td>
                     </tr>
                 </tbody>

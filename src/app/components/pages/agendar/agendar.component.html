@@ -9,46 +9,42 @@
 
                 <p>
                     <label for="aula">Aula</label>
-                    <select class="form-select" aria-label="Default select example" [(ngModel)]="selectArea.id" (change)="onSelectArea($event.target.value)">
-                        <option *ngFor="let area of areas" value="{{area.id}}">{{area.name}}</option>
-                      </select>
-                </p>
-
-                <p *ngIf="areas != ''">
-                    <label for="aula">Professor</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Selecione professor</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select name="area" class="form-select" aria-label="Default select example" [(ngModel)]="selectArea" (change)="onSelectArea()" required>
+                        <option *ngFor="let area of areas" [ngValue]="area">{{area.name}}</option>
                       </select>
                 </p>
 
                 <p>
-                    <label for="aula">Disponibilidad</label>
-                    <label for="aula">Data</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Selecione Aula</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <label for="aula">Professor</label>
+                    <select name="profesor" class="form-select" aria-label="Default select example" [(ngModel)]="selectProfesores" (change)="onSelectProfesor()" required>
+                        <option *ngFor="let profesor of profesores" [ngValue]="profesor" >{{profesor.name}}</option>
                       </select>
+                </p>
+                <label for="aula">Disponibilidad</label>
+                <p>
+                    <label for="aula">Data</label>
+                    <select name="data" class="form-select" aria-label="Default select example" [(ngModel)]="selectData.data" (change)="onSelectDatas($event.target.value)" required>
+                        <option *ngFor="let data of datas" value="{{data.data}}">{{data.data}}</option>
+                      </select>
+
                     <label for="aula">Hora</label>
-                    <select class="form-select" aria-label="Default select example">
-                          <option selected>Selecione Aula</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
+                    <select name="hora" class="form-select" aria-label="Default select example" [(ngModel)]="selectHora.hora" required>
+                        <option *ngFor="let hour of horas" value="{{hour.hora}}">{{hour.hora}}</option>
+                    </select>
                 </p>
 
 
-                <div class="alert alert-danger" role="alert">
-                    <p>errores</p>
+                <div class="alert alert-danger" role="alert" *ngIf="hasErrors">
+                    <p>{{ mensaje }}</p>
                 </div>
-                <p class="link">
-                    Todos os campos sáo obrigatórios
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                <div class="alert alert-primary" role="alert" *ngIf="hasSuccess">
+                    <p>Agrendamento realizado com sucesso!</p>
+                </div>
+                <p class="link" *ngIf="this.idAgenda !=undefined">
+                    <button type="button" class="btn btn-primary" (click)="updateAgendamento()">Salvar</button>
+                </p>
+                <p class="link" *ngIf="this.idAgenda ==undefined">
+                    <button type="button" class="btn btn-primary" (click)="salvarAgendamento()">Salvar</button>
                 </p>
             </form>
         </div>

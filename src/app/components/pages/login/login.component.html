@@ -23,6 +23,9 @@
                 <div class="alert alert-danger" role="alert" *ngIf="hasErrors">
                     <p *ngFor="let error of errors">{{ error }}</p>
                 </div>
+                <div class="alert alert-primary" role="alert" *ngIf="hasSuccess">
+                    <p>Usuario criado</p>
+                </div>
                 <p class="link">
                     Ainda não tem conta?
                     <a href="#paracadastro">Cadastre-se</a>
