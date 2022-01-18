@@ -1,0 +1,9 @@
+input {
+    width: 25%;
+    margin-left: 20px;
+}
+
+.home {
+    overflow: auto;
+    display: flex;
+}
