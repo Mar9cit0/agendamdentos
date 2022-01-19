@@ -6,7 +6,8 @@
     </div>
     <div class="card-body">
         <h5 class="m-0 font-weight-bold text-primary">Lista de Agendamentos</h5>
-        <div class="alert alert-danger" role="alert">
+
+        <div class="alert alert-danger" role="alert" *ngIf="agendamentos.length == 0">
             <p> Não tem nenhuma aula agendada. Deseja agenda? <a [routerLink]="['/agendar']">Agendar</a> </p>
         </div>
         <div class="table-responsive">
